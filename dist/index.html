@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="module" crossorigin>(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&s(n)}).observe(document,{childList:!0,subtree:!0});function i(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=i(e);fetch(e.href,r)}})();const c={А:"A",а:"a",Б:"B",б:"b",В:"V",в:"v",Г:"H",г:"h",Ґ:"G",ґ:"g",Д:"D",д:"d",Е:"E",е:"e",Ж:"Zh",ж:"zh",З:"Z",з:"z",И:"Y",и:"y",І:"I",і:"i",К:"K",к:"k",Л:"L",л:"l",М:"M",м:"m",Н:"N",н:"n",О:"O",о:"o",П:"P",п:"p",Р:"R",р:"r",С:"S",с:"s",Т:"T",т:"t",У:"U",у:"u",Ф:"F",ф:"f",Х:"Kh",х:"kh",Ц:"Ts",ц:"ts",Ч:"Ch",ч:"ch",Ш:"Sh",ш:"sh",Щ:"Shch",щ:"shch",Ь:"",ь:"","'":""},u={Є:"Ye",є:"ye",Ї:"Yi",ї:"yi",Й:"Y",й:"y",Ю:"Yu",ю:"yu",Я:"Ya",я:"ya"},l={Є:"Ie",є:"ie",Ї:"I",ї:"i",Й:"i",й:"i",Ю:"Iu",ю:"iu",Я:"Ia",я:"ia"},a=new RegExp(/^\p{L}/,"u"),d=t=>t.toUpperCase()===t;function f(t,o){const i=(o==null?void 0:o.apostropheSymbols)??["'"];let s="";for(let e=0;e<t.length;e++){if("Зз".includes(t[e])&&"Гг".includes(t[e+1])){s+=d(t[e]??"")?"Zgh":"zgh",e++;continue}const r=a.test(t[e-1]??""),n=i.includes(t[e-1]??"");s+=(r||n?l:u)[t[e]]??c[t[e]]??t[e]}return s}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector("#source"),o=document.querySelector("#transliterated");if(t===null){alert("Source input not found");return}if(o===null){alert("Transliterated input not found");return}t.addEventListener("input",()=>{o.value=f(t.value)})});
+</script>
+  <style rel="stylesheet" crossorigin>*{font-family:system-ui,sans-serif;font-weight:400;box-sizing:border-box}html,body{padding:0;margin:0;height:100vh;width:100vw}body{background:#fff;background-image:radial-gradient(rgb(136,136,136),.5px,transparent 0);background-size:4px 4px;background-position:-4px -4px;display:flex;justify-content:center;align-items:center;flex-direction:column}#title,#source,#transliterated{background-color:#fff;padding:16px;min-width:300px;border-color:#888;border:1px solid;margin-bottom:16px}
+</style>
+</head>
+
+<body>
+  <div id="title">Транслітерація</div>
+  <textarea id="source" placeholder="Текст українською" rows="5"></textarea>
+  <textarea id="transliterated" placeholder="Транслітерований текст" rows="5" readonly="true"></textarea>
+</body>
+
+</html>
